@@ -1,0 +1,102 @@
+{
+  "APIs": {
+    "CBBD": {
+      "None": {},
+      "Conference History": {
+        "Params": {
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 0
+      },
+      "Draft Picks": {
+        "Params": {
+          "Year": {
+            "Type": "int",
+            "Required": false
+          },
+          "Draft Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Source Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Position": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": 0
+      }
+    }
+  },
+  "Output": ["File", "DB", "Model"]
+}
