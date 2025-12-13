@@ -46,11 +46,11 @@
       "Broadcasts": {
         "Params": {
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "Team": {
@@ -79,11 +79,11 @@
       "Game Players": {
         "Params": {
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "Team": {
@@ -112,11 +112,11 @@
       "Game Teams": {
         "Params": {
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "Team": {
@@ -145,11 +145,11 @@
       "Games": {
         "Params": {
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "Team": {
@@ -228,11 +228,11 @@
             "Required": false
           },
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           }
         },
@@ -258,7 +258,7 @@
       "Plays by Date": {
         "Params": {
           "Var Date": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": true
           },
           "Shooting Plays Only": {
@@ -477,11 +477,11 @@
             "Required": false
           },
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           }
         },
@@ -509,11 +509,11 @@
             "Required": false
           },
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           }
         },
@@ -541,11 +541,11 @@
             "Required": false
           },
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           }
         },
@@ -573,11 +573,11 @@
             "Required": false
           },
           "Start Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           },
           "End Date Range": {
-            "Type": "str",
+            "Type": "datetime",
             "Required": false
           }
         },

@@ -5,32 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ScoreStream Admin Panel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="main-container">
     <div class="api-container">
-        <div class="selection-container">
-            <label for="apiSelection">Choose an option: </label>
-            <select id="apiSelection" name="selectedOption"></select>
+        <div class="param-selector">
+            <div class="api-header">
+                <h2>Score Stream Admin Panel</h2>
+            </div>
+            <div class="selection-container">
+                <label for="apiSelection">Choose an option: </label>
+                <select id="apiSelection" name="selectedOption"></select>
+            </div>
+            <div class="selection-container">
+                <label for="functionSelection">Choose function: </label>
+                <select id="functionSelection" name="selectedOption"></select>
+            </div>
+            <div id="paramContainer"></div>
         </div>
-        <div class="selection-container">
-            <label for="functionSelection">Choose function: </label>
-            <select id="functionSelection" name="selectedOption"></select>
-        </div>
-        <div id="paramContainer" class="param-container"></div>
         <div class="selection-button-container">
             <div class="add-remove-container">
-                <button type="button" id="addButton">Add</button>
-                <button type="button" id="removeButton">Remove</button>
-            </div>
-            <div class="submission-container">
-                <button type="button" id="submitButton">Submit</button>
+                <button type="button" id="paramAddButton">Add</button>
+                <button type="button" id="paramDirectSubmitButton">Direct Submit</button>
             </div>
         </div>
     </div>
-    <div class="function-viewport">
-
+    <div class="query-viewport">
+        <table id="queryTable"></table>
     </div>
+</div>
 
     <script src="app.js"></script>
 </body>

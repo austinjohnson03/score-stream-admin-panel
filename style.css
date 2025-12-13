@@ -1,11 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Removes the native browser styling */
+    margin: 0; /* Removes the margin in older versions of Chrome */
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield; /* Changes the appearance to a standard text field */
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    height: 100vh;
+    gap: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+
+.api-header {
+    display: flex;
+    background-color: #4699ef;
+    color: white;
+    padding: 1rem 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid black;
+}
+
+.api-header h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
 .api-container {
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    width: 30%;
+    border: 2px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    padding: 1.5rem;
+    justify-content: space-between;
 }
 
 .add-remove-container {
@@ -19,10 +61,62 @@
 
 .selection-container {
     padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    align-items: center;
     gap: 0.5rem;
+}
+
+.selection-container label {
+    text-align: right;
+}
+
+.selection-container input,
+.selection-container select {
+    justify-self: start;
+    width: 100%;
+}
+
+.param-field {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px;
+}
+
+.param-field label {
+    text-align: right;
+}
+
+.param-field input,
+.param-field select {
+    justify-self: start;
+    width: 90%;
+}
+
+.param-field input[type=number] {
+    -moz-appearance: textfield;
+    width: 20%;
+}
+
+.param-field input[type=checkbox],
+.param-field input[type=radio],
+.param-field input[type=date] {
+    width: auto;
+}
+
+.maxLimit {
+    display: flex;
+    margin-right: 1rem;
+    justify-content: right;
+    font-weight: 300;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.required {
+    font-weight: bold;
 }
 
 .selection-container select {
@@ -35,7 +129,7 @@
     padding: 8px 20px;
 }
 
-.add-remove-container button:hover {
+.add-remove-container button:not(:disabled):hover {
     background-color: lightgray;
     color: white;
     cursor: pointer;
@@ -59,4 +153,24 @@
     background-color: #41cdff;
     color: white;
     cursor: pointer;
+}
+
+.query-viewport {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
+    border-color: #aaa;
+}
+
+button:disabled:hover {
+    background-color: #ccc;
+    color: #666;
 }

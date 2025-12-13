@@ -1,9 +1,29 @@
+/*
+ * TODO:
+ *  - Create viewport functionality.
+ *  - Remove query functionality.
+ *  - Duplicate query prevention.
+ *      - From DB (long-term) & in viewport(this sprint).
+ *  - Generate socket connection to communicate with Hedwig.
+ *  - Generate JSON payloads to request calls to ScoreStream.
+ *  - Add dropdown or range check for season parameters.
+ *  - Make sure date ranges are valid.
+ *  - Autofill functionality.
+ *  - Drag and move elements to re-order instead of table buttons.
+ *  - Re-design UI so it looks more sleek.
+ */
 let funcMap = {};
 let packages = [];
 
 const apiSelection = document.getElementById('apiSelection');
 const functionSelection = document.getElementById('functionSelection');
 const paramContainer = document.getElementById('paramContainer');
+
+const paramAddButton = document.getElementById('paramAddButton');
+const paramDirectSubmitButton = document.getElementById('paramDirectSubmitButton');
+
+paramAddButton.disabled = true;
+paramDirectSubmitButton.disabled = true;
 
 apiSelection.innerHTML = "<option value=\"\">Select Package</option>";
 functionSelection.innerHTML = "<option value=\"\">Select Function</option>";
@@ -17,6 +37,10 @@ apiSelection.addEventListener('change', () => {
         const functionKeys = Object.keys(funcMap["Packages"][selectedPackage]);
         loadSelectOptions(functionSelection, functionKeys);
     }
+
+    paramContainer.innerHTML = "";
+    updateButtonState(paramAddButton);
+    updateButtonState(paramDirectSubmitButton);
 });
 
 functionSelection.addEventListener('change', () => {
@@ -25,19 +49,31 @@ functionSelection.addEventListener('change', () => {
 
     paramContainer.innerHTML = "";
 
-    if (!pkg || !func) return;
+    if (!pkg || !func) {
+        updateButtonState(paramAddButton);
+        updateButtonState(paramDirectSubmitButton);
+        return;
+    }
 
     const funcDef = funcMap["Packages"][pkg][func];
 
-    if (!funcDef || !funcDef["Params"]) return;
+    if (!funcDef || !funcDef["Params"]) {
+        updateButtonState(paramAddButton);
+        updateButtonState(paramDirectSubmitButton);
+        return;
+    }
 
     buildParamField(funcDef["Params"]);
 
     if (funcDef["Max Limit"] !== null) {
         const note = document.createElement("p");
-        note.textContent = `Max Limit: ${funcDef["Max Limit"]}`;
+        note.textContent = `Max Return Limit: ${funcDef["Max Limit"]}`;
+        note.classList.add("maxLimit");
         paramContainer.appendChild(note);
     }
+
+    updateButtonState(paramAddButton);
+    updateButtonState(paramDirectSubmitButton);
 });
 
 async function loadFuncMap() {
@@ -87,13 +123,14 @@ function loadSelectOptions(selectElement, arr) {
 function buildParamField(params) {
     Object.entries(params).forEach(([key, value]) => {
         const field = document.createElement("div");
+        field.classList.add("param-field");
 
         const label = document.createElement("label");
-        label.textContent = key;
+        label.textContent = `${key}:`;
 
         let input = document.createElement("input");
 
-        switch (value.Type) {
+        switch (value["Type"]) {
             case "str":
                 input.type = "text";
                 break;
@@ -121,8 +158,19 @@ function buildParamField(params) {
 
         field.appendChild(label);
         field.appendChild(input);
+
+        if (value["Required"] === true) {
+            field.classList.add("required");
+        }
         paramContainer.appendChild(field);
     });
+}
+
+function updateButtonState(button) {
+    const pkg = apiSelection.value;
+    const func = functionSelection.value;
+
+    button.disabled = !(pkg && func);
 }
 
 init().then(() => {});
