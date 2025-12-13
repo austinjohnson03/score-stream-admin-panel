@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=cancel" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,18 +29,52 @@
             </div>
             <div id="paramContainer"></div>
         </div>
-        <div class="selection-button-container">
-            <div class="add-remove-container">
-                <button type="button" id="paramAddButton">Add</button>
-                <button type="button" id="paramDirectSubmitButton">Direct Submit</button>
+        <div class="dest-btn-container">
+            <div class="destination-container">
+                <div class="destination-header">
+                    <h3>Destination(s):</h3>
+                </div>
+                <div class="destination-body">
+                    <div class="dest-label-container">
+                        <label>
+                            <input type="checkbox" id="destDB" name="destinationRequest" value="db">
+                            Database
+                        </label>
+                    </div>
+                    <div class="dest-label-container">
+                        <label>
+                            <input type="checkbox" id="destToFile" name="destinationRequest" value="file">
+                            File
+                        </label>
+                    </div>
+                    <div class="dest-label-container">
+                        <label>
+                            <input type="checkbox" id="destModel" name="destinationRequest" value="model">
+                            Model
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="selection-button-container">
+                <div class="add-remove-container">
+                    <button type="button" id="paramAddButton">Add</button>
+                    <button type="button" id="paramDirectSubmitButton">Direct Submit</button>
+                </div>
             </div>
         </div>
     </div>
     <div class="query-viewport">
-        <table id="queryTable"></table>
+        <table id="viewportTable">
+            <tr>
+                <th>Package</th>
+                <th>Function</th>
+                <th>Parameters</th>
+                <th>Remove</th>
+            </tr>
+        </table>
     </div>
 </div>
 
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
 </body>
 </html>

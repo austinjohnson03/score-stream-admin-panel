@@ -1,5 +1,9 @@
+import QueryManager from "./models/QueryManager.js";
+import QueryRequest from "./models/QueryRequest.js";
+
 /*
  * TODO:
+ *  - Add functionality for buttons under param query.
  *  - Create viewport functionality.
  *  - Remove query functionality.
  *  - Duplicate query prevention.
@@ -12,15 +16,22 @@
  *  - Drag and move elements to re-order instead of table buttons.
  *  - Re-design UI so it looks more sleek.
  */
+
+
 let funcMap = {};
 let packages = [];
 
 const apiSelection = document.getElementById('apiSelection');
 const functionSelection = document.getElementById('functionSelection');
 const paramContainer = document.getElementById('paramContainer');
+const destinationReq = document.getElementById('destinationRequest');
 
 const paramAddButton = document.getElementById('paramAddButton');
 const paramDirectSubmitButton = document.getElementById('paramDirectSubmitButton');
+
+const viewportTable = document.getElementById('viewportTable');
+
+let queryManager = new QueryManager(viewportTable);
 
 paramAddButton.disabled = true;
 paramDirectSubmitButton.disabled = true;
@@ -74,6 +85,15 @@ functionSelection.addEventListener('change', () => {
 
     updateButtonState(paramAddButton);
     updateButtonState(paramDirectSubmitButton);
+});
+
+paramAddButton.addEventListener('click', () => {
+    request = new QueryRequest(
+        apiSelection.value,
+        functionSelection.value,
+        paramContainer,
+        destinationReq
+        );
 });
 
 async function loadFuncMap() {
