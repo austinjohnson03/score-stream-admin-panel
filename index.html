@@ -8,15 +8,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <label for="apiSelection">Choose an option: </label>
-    <select id="apiSelection" name="selectedOption">
-        <option value="None">None</option>
-        <option value="CBBD">CBBD</option>
-        <option value="CFBD">CBFD</option>
-    </select>
-    <label for="functionSelection">Choose function: </label>
-    <select id="functionSelection" name="selectedOption">
-    </select>
+    <div class="api-container">
+        <div class="selection-container">
+            <label for="apiSelection">Choose an option: </label>
+            <select id="apiSelection" name="selectedOption"></select>
+        </div>
+        <div class="selection-container">
+            <label for="functionSelection">Choose function: </label>
+            <select id="functionSelection" name="selectedOption"></select>
+        </div>
+        <div id="paramContainer" class="param-container"></div>
+        <div class="selection-button-container">
+            <div class="add-remove-container">
+                <button type="button" id="addButton">Add</button>
+                <button type="button" id="removeButton">Remove</button>
+            </div>
+            <div class="submission-container">
+                <button type="button" id="submitButton">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="function-viewport">
+
+    </div>
 
     <script src="app.js"></script>
 </body>

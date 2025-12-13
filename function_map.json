@@ -1,15 +1,18 @@
 {
-  "APIs": {
+  "Packages": {
     "CBBD": {
-      "None": {},
       "Conference History": {
-        "Params": {
-          "Conference": {
-            "Type": "str",
-            "Required": false
-          }
-        },
-        "Max Limit": 0
+          "Params": {
+            "Conference": {
+              "Type": "str",
+              "Required": false
+            }
+          },
+          "Max Limit": null
+      },
+      "Conferences": {
+        "Params": null,
+        "Max Limit": null
       },
       "Draft Picks": {
         "Params": {
@@ -30,73 +33,592 @@
             "Required": false
           }
         },
-        "Max Limit": 0
+        "Max Limit": null
       },
-      "Conferences": {
+      "Draft Positions": {
         "Params": null,
-        "Max Limit": 0
+        "Max Limit": null
       },
-      "Conferences": {
+      "Draft Teams": {
         "Params": null,
-        "Max Limit": 0
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Broadcasts": {
+        "Params": {
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Season": {
+            "Type": "float",
+            "Required": false
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Tournament": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 3000
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Game Players": {
+        "Params": {
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Season": {
+            "Type": "float",
+            "Required": false
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Tournament": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 1000
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Game Teams": {
+        "Params": {
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Season": {
+            "Type": "float",
+            "Required": false
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Tournament": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 3000
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Games": {
+        "Params": {
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Season": {
+            "Type": "float",
+            "Required": false
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Status": {
+            "Type": "str",
+            "Required": false
+          },
+          "Tournament": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": 3000
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Lines": {
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "datetime",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "datetime",
+            "Required": false
+          }
+        },
+        "Max Limit": 3000
       },
-      "Conferences": {
+      "Providers": {
         "Params": null,
-        "Max Limit": 0
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Lineup Stats by Game": {
+        "Params": {
+          "Game ID": {
+            "Type": "int",
+            "Required": true
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Lineups by Team Season": {
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
+      "Play Types": {
         "Params": null,
-        "Max Limit": 0
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Plays": {
+        "Params": {
+          "Game ID": {
+            "Type": "int",
+            "Required": true
+          },
+          "Shooting Plays Only": {
+            "Type": "bool",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Plays by Date": {
+        "Params": {
+          "Var Date": {
+            "Type": "str",
+            "Required": true
+          },
+          "Shooting Plays Only": {
+            "Type": "bool",
+            "Required": false
+          },
+          "UTC Offset": {
+            "Type": "float",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Plays by Player ID": {
+        "Params": {
+          "Player ID": {
+            "Type": "int",
+            "Required": true
+          },
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Shooting Plays Only": {
+            "Type": "bool",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Plays by Team": {
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Team": {
+            "Type": "str",
+            "Required": true
+          },
+          "Shooting Plays Only": {
+            "Type": "bool",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       },
-      "Conferences": {
-        "Params": null,
-        "Max Limit": 0
+      "Plays by Tournament": {
+        "Params": {
+          "Tournament": {
+            "Type": "str",
+            "Required": true
+          },
+          "Season": {
+            "Type": "float",
+            "Required": true
+          },
+          "Shooting Plays Only": {
+            "Type": "bool",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Substitutions by Game": {
+        "Params": {
+          "Game ID": {
+            "Type": "int",
+            "Required": true
+          }
+        },
+        "Max Limit": null
+      },
+      "Substitutions by Player ID": {
+        "Params": {
+          "Player ID": {
+            "Type": "int",
+            "Required": true
+          },
+          "Season": {
+            "Type": "int",
+            "Required": true
+          }
+        },
+        "Max Limit": null
+      },
+      "Substitutions by Team": {
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Team": {
+            "Type": "str",
+            "Required": true
+          }
+        },
+        "Max Limit": null
+      },
+      "Rankings": {
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": false
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Week": {
+            "Type": "int",
+            "Required": false
+          },
+          "Poll Type": {
+            "Type": "str",
+            "Required Values": [
+              "ap",
+              "coaches"
+            ],
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Adjusted Efficiency": {
+        "Metadata": {
+          "API": "RatingsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "SRS": {
+        "Metadata": {
+          "API": "RatingsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Recruits": {
+        "Metadata": {
+          "API": "RecruitingApi"
+        },
+        "Params": {
+          "Year": {
+            "Type": "int",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Position": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Player Season Shooting Stats": {
+        "Metadata": {
+          "API": "StatsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Player Season Stats": {
+        "Metadata": {
+          "API": "StatsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "float",
+            "Required": true
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Team Season Shooting Stats": {
+        "Metadata": {
+          "API": "StatsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Team Season Stats": {
+        "Metadata": {
+          "API": "StatsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Season Type": {
+            "Type": "str",
+            "Required": false
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          },
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Start Date Range": {
+            "Type": "str",
+            "Required": false
+          },
+          "End Date Range": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Team Roster": {
+        "Metadata": {
+          "API": "TeamsApi"
+        },
+        "Params": {
+          "Season": {
+            "Type": "int",
+            "Required": true
+          },
+          "Team": {
+            "Type": "str",
+            "Required": false
+          }
+        },
+        "Max Limit": null
+      },
+      "Teams": {
+        "Metadata": {
+          "api": "TeamsApi",
+          "package": "cbbd",
+          "requiresParameters": false
+        },
+        "Params": {
+          "Conference": {
+            "Type": "str",
+            "Required": false
+          },
+          "Season": {
+            "Type": "int",
+            "Required": false
+          }
+        },
+        "Max Limit": null
       }
-    }
+    },
+    "CFBD": {}
   },
-  "Output": ["File", "DB", "Model"]
+  "Output": ["File", "DB", "Model", "Front End"]
 }
