@@ -37,19 +37,19 @@
                 <div class="destination-body">
                     <div class="dest-label-container">
                         <label>
-                            <input type="checkbox" id="destDB" name="destinationRequest" value="db">
+                            <input type="checkbox" id="destDB" name="destinationRequest" value="true" >
                             Database
                         </label>
                     </div>
                     <div class="dest-label-container">
                         <label>
-                            <input type="checkbox" id="destToFile" name="destinationRequest" value="file">
+                            <input type="checkbox" id="destFile" name="destinationRequest" value="true">
                             File
                         </label>
                     </div>
                     <div class="dest-label-container">
                         <label>
-                            <input type="checkbox" id="destModel" name="destinationRequest" value="model">
+                            <input type="checkbox" id="destModel" name="destinationRequest" value="true">
                             Model
                         </label>
                     </div>
@@ -64,13 +64,19 @@
         </div>
     </div>
     <div class="query-viewport">
-        <table id="viewportTable">
-            <tr>
-                <th>Package</th>
-                <th>Function</th>
-                <th>Parameters</th>
-                <th>Remove</th>
-            </tr>
+        <table id="viewportTable" class="viewport-table">
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Function</th>
+                    <th>Parameters</th>
+                    <th>Destination</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="viewportTableBody">
+
+            </tbody>
         </table>
     </div>
 </div>

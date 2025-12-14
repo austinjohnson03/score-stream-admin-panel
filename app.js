@@ -24,14 +24,16 @@ let packages = [];
 const apiSelection = document.getElementById('apiSelection');
 const functionSelection = document.getElementById('functionSelection');
 const paramContainer = document.getElementById('paramContainer');
-const destinationReq = document.getElementById('destinationRequest');
+const destinations = document.getElementsByName('destinationRequest');
 
 const paramAddButton = document.getElementById('paramAddButton');
 const paramDirectSubmitButton = document.getElementById('paramDirectSubmitButton');
 
-const viewportTable = document.getElementById('viewportTable');
+const viewportTable = document.getElementById('viewportTableBody');
 
 let queryManager = new QueryManager(viewportTable);
+
+let qr = null;
 
 paramAddButton.disabled = true;
 paramDirectSubmitButton.disabled = true;
@@ -88,13 +90,19 @@ functionSelection.addEventListener('change', () => {
 });
 
 paramAddButton.addEventListener('click', () => {
-    request = new QueryRequest(
+    const destinationReq = parseDestinations();
+    qr = new QueryRequest(
         apiSelection.value,
         functionSelection.value,
         paramContainer,
         destinationReq
         );
+
+    queryManager.addRequest(qr);
+    queryManager.updateViewport(handleRemove);
 });
+
+
 
 async function loadFuncMap() {
     try {
@@ -186,11 +194,27 @@ function buildParamField(params) {
     });
 }
 
+function handleRemove(request) {
+    queryManager.removeRequest(request);
+    queryManager.updateViewport(handleRemove);
+}
+
 function updateButtonState(button) {
     const pkg = apiSelection.value;
     const func = functionSelection.value;
 
     button.disabled = !(pkg && func);
+}
+
+function parseDestinations() {
+    let res = [];
+    destinations.forEach(item => {
+        if (item.checked)
+            // If you update IDs this must also be changed.
+            res.push(item.id.substring(4).toLowerCase());  // This works for now but find a cleaner workaround.
+    });
+
+    return res;
 }
 
 init().then(() => {});

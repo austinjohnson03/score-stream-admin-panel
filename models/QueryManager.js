@@ -2,7 +2,7 @@ import QueryRequest from "./QueryRequest.js";
 
 export default class QueryManager {
     constructor(viewport) {
-        if (!(viewport instanceof HTMLTableElement)) throw new Error("Viewport must be a table element.");
+        if (!(viewport instanceof HTMLTableSectionElement)) throw new Error("Viewport must be a tbody element.");
 
         this.viewport = viewport;
         this.requests = [];

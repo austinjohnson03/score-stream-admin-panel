@@ -185,7 +185,49 @@ button:disabled:hover {
 }
 
 .query-viewport {
+    max-height: 100%;
+    overflow-y: auto;
     border: 1px solid lightgray;
     border-radius: 10px;
     padding: 10px;
 }
+
+.viewport-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.viewport-table thead {
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid darkgray;
+}
+
+.viewport-table th {
+    padding: 1rem;
+}
+
+.viewport-table td {
+    padding: 0.25rem;
+}
+
+.viewport-table tr:nth-child(even) {
+    background-color: rgb(240, 240, 240);
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    color: darkred;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    color: red;
+    transition: ease 0.3s;
+}
+
+.query-viewport-container {
+    width: 100%;
+}
+

@@ -77,6 +77,10 @@ export default class QueryRequest {
             .join(", ");
     }
 
+    fmtDestinations() {
+        return this.destination.join(", ");
+    }
+
     toTableRow(onRemove) {
         const tr = document.createElement("tr");
         tr.dataset.requestId = this.id;
@@ -85,6 +89,7 @@ export default class QueryRequest {
             <td>${this.pkgName}</td>
             <td>${this.funcName}</td>
             <td class="params-cell">${this.fmtParametersForTable()}</td>
+            <td>${this.fmtDestinations()}</td>
             <td>
                 <button class="remove-btn">
                     <span class="material-symbols-outlined">cancel</span>
