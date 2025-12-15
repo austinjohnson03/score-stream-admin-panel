@@ -62,11 +62,13 @@ export default class QueryManager {
                 console.error(`Response error: ${response.status}`);
             }
 
+            this.clearRequests();
+            return true;
+
         } catch (err) {
             console.error(err.message);
+            return false;
         }
-
-        this.clearRequests();
     }
 
     isDuplicateRequest(request) {

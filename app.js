@@ -123,10 +123,15 @@ querySubmitBtn.addEventListener('click', async () => {
         return;
     }
 
-    await queryManager.submitRequests();
-    showToast("Query successfully submitted.", "success");
-    syncSubmitButton();
-    queryManager.updateViewport(handleRemove);
+    const success = await queryManager.submitRequests();
+
+    if (success) {
+        showToast("Query successfully submitted.", "success");
+        queryManager.updateViewport(handleRemove);
+        syncSubmitButton();
+    } else {
+        showToast("Submission failed.", "error");
+    }
 })
 
 
