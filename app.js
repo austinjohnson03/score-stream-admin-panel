@@ -3,14 +3,16 @@ import QueryRequest from "./models/QueryRequest.js";
 
 /*
  * TODO:
- *  - Enforce required params
- *  - Make sure date ranges are valid.
- *  - Add dropdown or range check for season parameters.
- *  - Generate JSON payloads to request calls to ScoreStream.
- *  - Generate socket connection to communicate with Hedwig.
- *  - Autofill functionality.
- *  - Drag and move elements to re-order instead of table buttons.
- *  - Re-design UI so it looks more sleek.
+ *  - This Sprint
+ *      - Make sure date ranges are valid.
+ *      - Generate JSON payloads to request calls to ScoreStream.
+ *      - Generate socket connection to communicate with Hedwig.
+ *  - Backlog
+ *      - Show per query submission success.
+ *      - Add dropdown or range check for season parameters.
+ *      - Autofill functionality.
+ *      - Drag and move elements to re-order instead of table buttons.
+ *      - Re-design UI so it looks more sleek.
  */
 
 
@@ -24,6 +26,8 @@ const destinations = document.getElementsByName('destinationRequest');
 
 const paramAddButton = document.getElementById('paramAddButton');
 const paramDirectSubmitButton = document.getElementById('paramDirectSubmitButton');
+
+const querySubmitBtn = document.getElementById('querySubmitBtn');
 
 const viewportTable = document.getElementById('viewportTableBody');
 
@@ -86,13 +90,20 @@ functionSelection.addEventListener('change', () => {
 });
 
 paramAddButton.addEventListener('click', () => {
-    const destinationReq = parseDestinations();
+    const form = document.getElementById('paramForm');
 
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        showToast("Please fill out required fields.", "error");
+        return;
+    }
+
+    const destinationReq = parseDestinations();
     let params = collectParams();
 
     qr = new QueryRequest(
-        apiSelection.value,
-        functionSelection.value,
+        toSnakeCase(apiSelection.value),
+        toSnakeCase(functionSelection.value),
         params,
         destinationReq
         );
@@ -100,10 +111,24 @@ paramAddButton.addEventListener('click', () => {
     if (queryManager.addRequest(qr)) {
         showToast("Query added successfully.", "success");
     } else {
-        showToast("Failed to add query.", "error");
+        showToast("Duplicate query request exists.", "error");
     }
     queryManager.updateViewport(handleRemove);
+    syncSubmitButton();
 });
+
+querySubmitBtn.addEventListener('click', () => {
+    if (queryManager.getCount() === 0) {
+        showToast("No queries added.", "error");
+        return;
+    }
+
+    queryManager.submitRequests().then(r => {
+    });
+    showToast("Query successfully submitted.", "success");
+    syncSubmitButton();
+    queryManager.updateViewport(handleRemove);
+})
 
 
 async function loadFuncMap() {
@@ -123,6 +148,7 @@ async function loadFuncMap() {
 async function init() {
     funcMap = await loadFuncMap();
     setupAdminPanel();
+    syncSubmitButton();
 }
 
 function setupAdminPanel() {
@@ -184,14 +210,14 @@ function buildParamField(params) {
                 break;
         }
 
-        input.name = key;
+        input.name = toSnakeCase(key);
         input.required = value["Required"] === true;
 
         field.appendChild(label);
         field.appendChild(input);
 
         if (value["Required"] === true) {
-            field.classList.add("required");
+            label.innerHTML = `${key}: <span class="required">*</span>`;
         }
         paramContainer.appendChild(field);
     });
@@ -199,6 +225,7 @@ function buildParamField(params) {
 
 function handleRemove(request) {
     queryManager.removeRequest(request);
+    querySubmitBtn.disabled = queryManager.getCount() === 0;
     queryManager.updateViewport(handleRemove);
 }
 
@@ -214,7 +241,7 @@ function parseDestinations() {
     destinations.forEach(item => {
         if (item.checked)
             // If you update IDs this must also be changed.
-            res.push(item.id.substring(4).toLowerCase());  // This works for now but find a cleaner workaround.
+            res.push(toSnakeCase(item.id.substring(4)));  // This works for now but find a cleaner workaround.
     });
 
     return res;
@@ -277,6 +304,10 @@ function showToast(msg, type = "success", duration = 3000 ) {
         toast.classList.remove("show");
         setTimeout(() => toast.remove(), 200);
     }, duration);
+}
+
+function syncSubmitButton() {
+   querySubmitBtn.disabled = queryManager.getCount() === 0;
 }
 
 init().then(() => {});

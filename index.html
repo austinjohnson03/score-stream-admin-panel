@@ -15,53 +15,55 @@
 <body>
 <div class="main-container">
     <div class="api-container">
-        <div class="param-selector">
-            <div class="api-header">
-                <h2>Score Stream Admin Panel</h2>
-            </div>
-            <div class="selection-container">
-                <label for="apiSelection">Choose an option: </label>
-                <select id="apiSelection" name="selectedOption"></select>
-            </div>
-            <div class="selection-container">
-                <label for="functionSelection">Choose function: </label>
-                <select id="functionSelection" name="selectedOption"></select>
-            </div>
-            <div id="paramContainer"></div>
-        </div>
-        <div class="dest-btn-container">
-            <div class="destination-container">
-                <div class="destination-header">
-                    <h3>Destination(s):</h3>
+        <form id="paramForm">
+            <div class="param-selector">
+                <div class="api-header">
+                    <h2>Score Stream Admin Panel</h2>
                 </div>
-                <div class="destination-body">
-                    <div class="dest-label-container">
-                        <label>
-                            <input type="checkbox" id="destDB" name="destinationRequest" value="true" >
-                            Database
-                        </label>
+                <div class="selection-container">
+                    <label for="apiSelection">Choose an option: </label>
+                    <select id="apiSelection" name="selectedOption"></select>
+                </div>
+                <div class="selection-container">
+                    <label for="functionSelection">Choose function: </label>
+                    <select id="functionSelection" name="selectedOption"></select>
+                </div>
+                <div id="paramContainer"></div>
+            </div>
+            <div class="dest-btn-container">
+                <div class="destination-container">
+                    <div class="destination-header">
+                        <h3>Destination(s):</h3>
                     </div>
-                    <div class="dest-label-container">
-                        <label>
-                            <input type="checkbox" id="destFile" name="destinationRequest" value="true">
-                            File
-                        </label>
+                    <div class="destination-body">
+                        <div class="dest-label-container">
+                            <label>
+                                <input type="checkbox" id="destDB" name="destinationRequest" value="true" >
+                                Database
+                            </label>
+                        </div>
+                        <div class="dest-label-container">
+                            <label>
+                                <input type="checkbox" id="destFile" name="destinationRequest" value="true">
+                                File
+                            </label>
+                        </div>
+                        <div class="dest-label-container">
+                            <label>
+                                <input type="checkbox" id="destModel" name="destinationRequest" value="true">
+                                Model
+                            </label>
+                        </div>
                     </div>
-                    <div class="dest-label-container">
-                        <label>
-                            <input type="checkbox" id="destModel" name="destinationRequest" value="true">
-                            Model
-                        </label>
+                </div>
+                <div class="selection-button-container">
+                    <div class="add-remove-container">
+                        <button type="button" id="paramAddButton">Add</button>
+                        <button type="button" id="paramDirectSubmitButton">Direct Submit</button>
                     </div>
                 </div>
             </div>
-            <div class="selection-button-container">
-                <div class="add-remove-container">
-                    <button type="button" id="paramAddButton">Add</button>
-                    <button type="button" id="paramDirectSubmitButton">Direct Submit</button>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="query-viewport-container">
         <table id="viewportTable" class="viewport-table">
@@ -79,7 +81,7 @@
     </div>
     <div class="submission-btn-container">
         <div class="submission-container">
-            <button type="button" disabled id="submissionButton">Submit</button>
+            <button type="button" disabled id="querySubmitBtn">Submit</button>
         </div>
     </div>
 </div>

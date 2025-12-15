@@ -8,6 +8,8 @@ export default class QueryManager {
         this.requests = [];
     }
 
+    getCount() { return this.requests.length; }
+
     addRequest(newRequest) {
         if (!(newRequest instanceof QueryRequest)) throw new Error("Request must be a QueryRequest.");
 
@@ -41,12 +43,28 @@ export default class QueryManager {
 
     clearRequests() { this.requests = []; }
 
-    submitRequests() {
-        // Functionality to send to payload from socket.
-        // Temp functionality for testing.
-        this.requests.forEach(request => {
-            console.log(request.toJSON());
-        });
+    async submitRequests() {
+        if (this.getCount() === 0) return;
+
+        try {
+            const payload = this.requests.map(r => r.toJSON());
+
+            const response = await fetch("http://localhost:3000/submit",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+            if (!response.ok) {
+                console.error(`Response error: ${response.status}`);
+            }
+
+        } catch (err) {
+            console.error(err.message);
+        }
 
         this.clearRequests();
     }

@@ -26,6 +26,14 @@ input[type=number] {
     box-sizing: border-box;
 }
 
+.api-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
 
 .api-header {
     display: flex;
@@ -43,15 +51,6 @@ input[type=number] {
     text-transform: uppercase;
 }
 
-
-.api-container {
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
 
 .add-remove-container {
     padding: 10px;
@@ -166,6 +165,19 @@ input[type=number] {
     padding: 16px 40px;
 }
 
+.submission-container button:disabled {
+    opacity: 0.4;
+    background-color: #ccc;
+    color: #606060;
+    border-color: #aaa;
+}
+
+.submission-container button:disabled:hover {
+    background-color: #ccc;
+    color: #666;
+    cursor: auto;
+}
+
 .submission-container button:hover {
     background-color: #41cdff;
     color: white;
@@ -184,6 +196,7 @@ button:disabled:hover {
     background-color: #ccc;
     color: #666;
 }
+
 
 .query-viewport-container {
     max-height: 100%;
