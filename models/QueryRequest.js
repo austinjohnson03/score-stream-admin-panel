@@ -14,7 +14,10 @@ export default class QueryRequest {
     }
 
     normalizeParameters() {
-        if (this.parameters === null) return {};
+        if (this.parameters === null) {
+            console.warn("No parameters provided");
+            return {};
+        }
 
         const result = {};
 
@@ -24,12 +27,17 @@ export default class QueryRequest {
                 value === null ||
                 value === undefined ||
                 (typeof value === "string" && value.trim() === "")
-            ) continue;
+            ) {
+                console.log(`Skipping ${key}`);
+                continue;
+            }
 
             if (value instanceof Date) {
                 result[key] = value.toISOString();
+                console.log(`Found ${key}`);
             } else {
                 result[key] = value;
+                console.log(`Found ${key}`);
             }
         }
 
@@ -69,6 +77,7 @@ export default class QueryRequest {
         return entries
             .map(([key, value]) => {
                 if (typeof value === "boolean") {
+                    console.log(`Found key: '${key}', value=${value}`);
                     return `${key}=${value ? "true" : "false"}`;
                 }
 

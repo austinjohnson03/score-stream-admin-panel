@@ -91,17 +91,19 @@ functionSelection.addEventListener('change', () => {
 
 paramAddButton.addEventListener('click', () => {
     const destinationReq = parseDestinations();
+
+    let params = collectParams();
+
     qr = new QueryRequest(
         apiSelection.value,
         functionSelection.value,
-        paramContainer,
+        params,
         destinationReq
         );
 
     queryManager.addRequest(qr);
     queryManager.updateViewport(handleRemove);
 });
-
 
 
 async function loadFuncMap() {
@@ -157,6 +159,7 @@ function buildParamField(params) {
         label.textContent = `${key}:`;
 
         let input = document.createElement("input");
+        input.name = toSnakeCase(key);
 
         switch (value["Type"]) {
             case "str":
@@ -215,6 +218,45 @@ function parseDestinations() {
     });
 
     return res;
+}
+
+function collectParams() {
+    const params = {};
+    const fields = document.querySelectorAll(".param-field");
+
+    fields.forEach(field => {
+        const input = field.querySelector("input");
+        if (!input) return;
+
+        let value;
+
+        switch (input.type) {
+            case "checkbox":
+                value = field.checked;
+                break;
+
+            case "number":  // Update to handle floats
+                value = input.value === "" ? null : Number(input.value);
+                break;
+
+            default:
+                value = input.value;
+        }
+
+        params[input.name] = value;
+    });
+
+    return params;
+}
+
+function toSnakeCase(str) {
+    if (!str) return "";
+
+    return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_")
+        .replace(/^_+|_+$/g, "");
 }
 
 init().then(() => {});

@@ -28,7 +28,7 @@ input[type=number] {
 
 .api-header {
     display: flex;
-    background-color: #4699ef;
+    background: #4699ef;
     color: white;
     padding: 1rem 2rem;
     flex-direction: column;
@@ -44,10 +44,12 @@ input[type=number] {
 
 
 .api-container {
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .add-remove-container {
@@ -187,9 +189,9 @@ button:disabled:hover {
 .query-viewport {
     max-height: 100%;
     overflow-y: auto;
-    border: 1px solid lightgray;
+    border: 1px solid black;
     border-radius: 10px;
-    padding: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .viewport-table {
@@ -199,16 +201,23 @@ button:disabled:hover {
 }
 
 .viewport-table thead {
-    background-color: rgb(240, 240, 240);
-    border-bottom: 1px solid darkgray;
+    background-color: #444444;
+    color: white;
+    outline: 1px solid black;
+    position: sticky;
+    top: 0;
 }
 
 .viewport-table th {
     padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .viewport-table td {
-    padding: 0.25rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
 }
 
 .viewport-table tr:nth-child(even) {
