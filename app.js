@@ -117,14 +117,13 @@ paramAddButton.addEventListener('click', () => {
     syncSubmitButton();
 });
 
-querySubmitBtn.addEventListener('click', () => {
+querySubmitBtn.addEventListener('click', async () => {
     if (queryManager.getCount() === 0) {
         showToast("No queries added.", "error");
         return;
     }
 
-    queryManager.submitRequests().then(r => {
-    });
+    await queryManager.submitRequests();
     showToast("Query successfully submitted.", "success");
     syncSubmitButton();
     queryManager.updateViewport(handleRemove);
