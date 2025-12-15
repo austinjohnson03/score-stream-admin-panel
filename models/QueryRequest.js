@@ -112,4 +112,13 @@ export default class QueryRequest {
 
         return tr;
     }
+
+    getSignature() {
+        return JSON.stringify({
+            pkgName: this.pkgName,
+            funcName: this.funcName,
+            parameters: this.normalizeParameters(),
+            destination: [...this.destination].sort(),
+        });
+    }
 }

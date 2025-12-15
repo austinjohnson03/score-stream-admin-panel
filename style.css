@@ -19,6 +19,7 @@ input[type=number] {
 .main-container {
     display: grid;
     grid-template-columns: 35% 65%;
+    grid-template-rows: 5fr 1fr;
     height: 100vh;
     gap: 1rem;
     padding: 2rem;
@@ -154,12 +155,11 @@ input[type=number] {
 
 .submission-container {
     padding: 10px;
-    display: flex;
-    justify-content: center;
 }
 
 .submission-container button {
     border: #006080 solid 1px;
+    font-size: large;
     background: #008CBA;
     color: white;
     border-radius: 10px;
@@ -175,9 +175,8 @@ input[type=number] {
 
 button:disabled {
     opacity: 0.4;
-    cursor: not-allowed;
     background-color: #ccc;
-    color: #666;
+    color: #606060;
     border-color: #aaa;
 }
 
@@ -186,7 +185,7 @@ button:disabled:hover {
     color: #666;
 }
 
-.query-viewport {
+.query-viewport-container {
     max-height: 100%;
     overflow-y: auto;
     border: 1px solid black;
@@ -236,7 +235,44 @@ button:disabled:hover {
     transition: ease 0.3s;
 }
 
-.query-viewport-container {
+.viewport-container {
     width: 100%;
 }
 
+.submission-btn-container {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#toastContainer {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 9999;
+}
+
+.toast {
+    min-width: 240px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+            opacity 0.35s ease-out,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success { background: green; }
+.toast.error { background: red; }

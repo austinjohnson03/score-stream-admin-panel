@@ -11,7 +11,13 @@ export default class QueryManager {
     addRequest(newRequest) {
         if (!(newRequest instanceof QueryRequest)) throw new Error("Request must be a QueryRequest.");
 
+        if (this.isDuplicateRequest(newRequest)) {
+            console.warn(`Duplicate request ${newRequest.pkgName}: ${newRequest.funcName}`);
+            return false;
+        }
+
         this.requests.push(newRequest);
+        return true;
     }
 
     updateViewport(onRemove) {
@@ -44,4 +50,10 @@ export default class QueryManager {
 
         this.clearRequests();
     }
+
+    isDuplicateRequest(request) {
+        const sig = request.getSignature();
+        return this.requests.some(r => r.getSignature() === sig);
+    }
+
 }

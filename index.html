@@ -63,24 +63,28 @@
             </div>
         </div>
     </div>
-    <div class="query-viewport">
+    <div class="query-viewport-container">
         <table id="viewportTable" class="viewport-table">
             <thead>
-                <tr>
-                    <th>Package</th>
-                    <th>Function</th>
-                    <th>Parameters</th>
-                    <th>Destination</th>
-                    <th>Remove</th>
-                </tr>
+            <tr>
+                <th>Package</th>
+                <th>Function</th>
+                <th>Parameters</th>
+                <th>Destination</th>
+                <th>Remove</th>
+            </tr>
             </thead>
-            <tbody id="viewportTableBody">
-
-            </tbody>
+            <tbody id="viewportTableBody"></tbody>
         </table>
+    </div>
+    <div class="submission-btn-container">
+        <div class="submission-container">
+            <button type="button" disabled id="submissionButton">Submit</button>
+        </div>
     </div>
 </div>
 
+<div id="toastContainer"></div>
     <script src="app.js" type="module"></script>
 </body>
 </html>

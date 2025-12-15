@@ -3,15 +3,11 @@ import QueryRequest from "./models/QueryRequest.js";
 
 /*
  * TODO:
- *  - Add functionality for buttons under param query.
- *  - Create viewport functionality.
- *  - Remove query functionality.
- *  - Duplicate query prevention.
- *      - From DB (long-term) & in viewport(this sprint).
- *  - Generate socket connection to communicate with Hedwig.
- *  - Generate JSON payloads to request calls to ScoreStream.
- *  - Add dropdown or range check for season parameters.
+ *  - Enforce required params
  *  - Make sure date ranges are valid.
+ *  - Add dropdown or range check for season parameters.
+ *  - Generate JSON payloads to request calls to ScoreStream.
+ *  - Generate socket connection to communicate with Hedwig.
  *  - Autofill functionality.
  *  - Drag and move elements to re-order instead of table buttons.
  *  - Re-design UI so it looks more sleek.
@@ -101,7 +97,11 @@ paramAddButton.addEventListener('click', () => {
         destinationReq
         );
 
-    queryManager.addRequest(qr);
+    if (queryManager.addRequest(qr)) {
+        showToast("Query added successfully.", "success");
+    } else {
+        showToast("Failed to add query.", "error");
+    }
     queryManager.updateViewport(handleRemove);
 });
 
@@ -243,7 +243,8 @@ function collectParams() {
                 value = input.value;
         }
 
-        params[input.name] = value;
+        let key = toSnakeCase(input.name);
+        params[key] = value;
     });
 
     return params;
@@ -257,6 +258,25 @@ function toSnakeCase(str) {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "_")
         .replace(/^_+|_+$/g, "");
+}
+
+
+function showToast(msg, type = "success", duration = 3000 ) {
+    const container = document.getElementById("toastContainer");
+
+    const toast = document.createElement("div");
+
+    toast.className = `toast ${type}`;
+    toast.textContent = msg;
+
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => toast.classList.add("show"));
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 200);
+    }, duration);
 }
 
 init().then(() => {});
